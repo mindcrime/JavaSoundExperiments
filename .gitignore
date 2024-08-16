@@ -5,3 +5,10 @@
 .settings/
 .project
 .classpath
+*.wav
+*.mp3
+*.zip
+target/
+bin/
+build/
+dependency-reduced-pom.xml

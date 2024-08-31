@@ -12,22 +12,22 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class CaptureSimultaneous1Application implements CommandLineRunner
+// @SpringBootApplication
+public class CaptureSimultaneous1Main implements CommandLineRunner
 {
 	
 	private static final Map<String, String> mixerNames = new HashMap<String, String>();
 	
 	static
 	{
-		mixerNames.put( "left", "Audio" );
-		mixerNames.put( "right", "Audio_1" );
+		mixerNames.put( "left", "Device" );
+		mixerNames.put( "right", "Device_1" );
 	}
 
 	@Override
 	public void run( String... args ) throws Exception
 	{
-		SpringApplication.run(CaptureSimultaneous1Application.class, args );		
+		SpringApplication.run(CaptureSimultaneous1Main.class, args );		
 	}
 	
 	public static void main( String[] args ) throws Exception
@@ -93,12 +93,12 @@ public class CaptureSimultaneous1Application implements CommandLineRunner
 				
 			String mxName = mxInfo.getName();
 			
-			// System.out.println( "mxName: " + mxName );
-			// System.out.println( "class: " + mxInfo.getClass().getCanonicalName() );
+			System.out.println( "mxName: " + mxName );
+			System.out.println( "class: " + mxInfo.getClass().getCanonicalName() );
 			
 			if( mxInfo.getClass().getCanonicalName().toString().equalsIgnoreCase( "com.sun.media.sound.DirectAudioDeviceProvider.DirectAudioDeviceInfo" ) && mxName.matches( mixerNames.get( name ) + "\\s+.*" ))
 			{
-				// System.out.println( "mixer: " + mxName + " matches for name: " + name );
+				System.out.println( "mixer: " + mxName + " matches for name: " + name );
 				
 				mixerToReturn = AudioSystem.getMixer( mxInfo );
 				break;
